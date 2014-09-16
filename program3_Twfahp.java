@@ -11,7 +11,12 @@
  *
  */
 
-public class Twfahp { 
+public class program3_Twfahp { 
+	// for displaying memory statistics in MB
+	private static final long MEGABYTE = 1024L * 1024L;
+	public static long bytesToMegabytes(long bytes) {
+	    return bytes / MEGABYTE;
+	  }
 
 	// Create arrays oldPlate and newPlate with linear dimension d
 	//   plus two extra rows and columns to hold edge temperatures
@@ -229,9 +234,11 @@ public class Twfahp {
 
 
 	public static void main(String[] args) {
+		// for displaying the runtime statistics in milliseconds
+		long startTime = System.currentTimeMillis();
 
 		//Process the command line options
-		Twfahp.getInput(args);
+		program3_Twfahp.getInput(args);
 
 		// Initialize plates before simulation		
 		oldPlate= new Float[d + 2][d + 2];
@@ -248,6 +255,26 @@ public class Twfahp {
 		}
 		// Display the results
 		print(newPlate);
+		
+		// Get the Java runtime
+	    Runtime runtime = Runtime.getRuntime();
+	    // Run the garbage collector
+	    runtime.gc();
+	    System.out.println("##### Heap utilization statistics #####");
+	    // Print used memory
+	    long memory = runtime.totalMemory() - runtime.freeMemory();
+	    System.out.println("Used memory in bytes: " + memory);
+	    System.out.println("Used memory in megabytes: " + bytesToMegabytes(memory));
+	  //Print free memory
+        System.out.println("Free memory in bytes:" + runtime.freeMemory());
+        System.out.println("Free memory in megabytes: " + bytesToMegabytes(runtime.freeMemory()));
+      //Print total available memory
+        System.out.println("Total available memory in bytes:" + runtime.totalMemory());
+        System.out.println("Total available memory in megabytes: " + bytesToMegabytes(runtime.totalMemory()));
+	    System.out.println("##### Runtime statistics #####");
+        long endTime   = System.currentTimeMillis();
+        long totalTime = endTime - startTime;
+        System.out.println("Total execution time: " +totalTime +" milliseconds");
 
 	}
 
