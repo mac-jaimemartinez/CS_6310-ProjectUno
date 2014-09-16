@@ -11,7 +11,12 @@
  *
  */
 
-public class Tpdohp {
+public class program4_Tpdohp {
+	// for displaying memory statistics in MB
+	private static final long MEGABYTE = 1024L * 1024L;
+	public static long bytesToMegabytes(long bytes) {
+	    return bytes / MEGABYTE;
+	  }
     
     //Values for input parameters.
     public static int d;
@@ -295,9 +300,11 @@ public class Tpdohp {
     }
     
     public static void main(String[] args) throws CloneNotSupportedException {
+		// for displaying the runtime statistics in milliseconds
+		long startTime = System.currentTimeMillis();
         
         //Process the command line options
-        Tpdohp.getInput(args);
+        program4_Tpdohp.getInput(args);
         
         // Initialize lattices before simulation
         lattice helperLattice =  new lattice();
@@ -312,5 +319,26 @@ public class Tpdohp {
         
         // Display the results
         lattice.print();
+        
+		// Get the Java runtime
+	    Runtime runtime = Runtime.getRuntime();
+	    // Run the garbage collector
+	    runtime.gc();
+	    System.out.println("##### Heap utilization statistics #####");
+	    // Print used memory
+	    long memory = runtime.totalMemory() - runtime.freeMemory();
+	    System.out.println("Used memory in bytes: " + memory);
+	    System.out.println("Used memory in megabytes: " + bytesToMegabytes(memory));
+	  //Print free memory
+        System.out.println("Free memory in bytes:" + runtime.freeMemory());
+        System.out.println("Free memory in megabytes: " + bytesToMegabytes(runtime.freeMemory()));
+      //Print total available memory
+        System.out.println("Total available memory in bytes:" + runtime.totalMemory());
+        System.out.println("Total available memory in megabytes: " + bytesToMegabytes(runtime.totalMemory()));
+	    System.out.println("##### Runtime statistics #####");
+        long endTime   = System.currentTimeMillis();
+        long totalTime = endTime - startTime;
+        System.out.println("Total execution time: " +totalTime +" milliseconds");
+        
     }
 }
