@@ -1,7 +1,7 @@
 /**
  * 
  */
-package tpfahp;
+//package tpfahp;
 
 /**
  * Tpfahp Application
@@ -16,7 +16,12 @@ package tpfahp;
  *
  */
 
-public class Tpfahp {
+public class program2_Tpfahp {
+	// for displaying memory statistics in MB
+	private static final long MEGABYTE = 1024L * 1024L;
+	public static long bytesToMegabytes(long bytes) {
+	    return bytes / MEGABYTE;
+	  }
 
 
 	// Create arrays oldPlate and newPlate
@@ -226,9 +231,11 @@ public class Tpfahp {
 
 
 	public static void main(String[] args) {
+		// for displaying the runtime statistics in milliseconds
+		long startTime = System.currentTimeMillis();
 
 		//Process the command line options
-		Tpfahp.getInput(args);
+		program2_Tpfahp.getInput(args);
 
 		// Initialize plates before simulation		
 		oldPlate= new float[d + 2][d + 2];
@@ -245,6 +252,26 @@ public class Tpfahp {
 		}
 		// Display the results
 		print(newPlate);
+		
+		// Get the Java runtime
+	    Runtime runtime = Runtime.getRuntime();
+	    // Run the garbage collector
+	    runtime.gc();
+	    System.out.println("##### Heap utilization statistics #####");
+	    // Print used memory
+	    long memory = runtime.totalMemory() - runtime.freeMemory();
+	    System.out.println("Used memory in bytes: " + memory);
+	    System.out.println("Used memory in megabytes: " + bytesToMegabytes(memory));
+	  //Print free memory
+        System.out.println("Free memory in bytes:" + runtime.freeMemory());
+        System.out.println("Free memory in megabytes: " + bytesToMegabytes(runtime.freeMemory()));
+      //Print total available memory
+        System.out.println("Total available memory in bytes:" + runtime.totalMemory());
+        System.out.println("Total available memory in megabytes: " + bytesToMegabytes(runtime.totalMemory()));
+	    System.out.println("##### Runtime statistics #####");
+        long endTime   = System.currentTimeMillis();
+        long totalTime = endTime - startTime;
+        System.out.println("Total execution time: " +totalTime +" milliseconds");
 
 	}
 
