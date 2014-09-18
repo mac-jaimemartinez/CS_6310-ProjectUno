@@ -55,6 +55,9 @@ public class ArrayFloatPrimitivePlate {
                 else if (i>0 && i<plate.length && (j==plate.length-1)){
                     plate[i][j]=right;
                 }
+                else {
+                	plate[i][j] = (float) 0;
+                }
             }
         }
     }

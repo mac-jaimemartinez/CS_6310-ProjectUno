@@ -1,18 +1,18 @@
-package Tpdahp;
+package Twfahp;
 
-public class ArrayDoublePlate {
+public class ArrayFloatObjectPlate {
 	// Create arrays oldPlate and newPlate with linear dimension d
     //   plus two extra rows and columns to hold edge temperatures
     private static int d;
     private static int maxIterations= 400;
-    private static double relChgStopCriteria = 0.005;
-    private static double[][] oldPlate;
-    private static double[][] newPlate;
-    private static double t, b, l, r;
+    private static Float relChgStopCriteria = 0.005f;
+    private static Float[][] oldPlate;
+    private static Float[][] newPlate;
+    private static Float t, b, l, r;
     
     // Run the simulation
-    public void runSimulation(int dim, double top, double bottom, double left,
-    		double right, MetaData metaData) {
+    public void runSimulation(int dim, Float top, Float bottom, Float left,
+    		Float right, MetaData metaData) {
         //Process the command line options
         d = dim;
         t = top;
@@ -21,13 +21,13 @@ public class ArrayDoublePlate {
         r = right;
         
         // Initialize plates before simulation		
-        oldPlate= new double[d + 2][d + 2];
+        oldPlate= new Float[d + 2][d + 2];
         initialize(oldPlate, t, b, l, r);
-        newPlate= new double[d + 2][d + 2];
+        newPlate= new Float[d + 2][d + 2];
         initialize(newPlate, t, b, l, r);
         
         // Simulate Diffusion by averaging the temperatures
-        double maxChange = 100;
+        Float maxChange = 100f;
         int i = 0;
         for ( ; i < maxIterations && maxChange > relChgStopCriteria; i++) {
             //System.out.println("\n\n");
@@ -40,7 +40,7 @@ public class ArrayDoublePlate {
     }
 
     // Initialize the temperatures of the edge values and the plate itself
-    public static void initialize(double[][] plate, double top, double bot, double left, double right) {
+    public static void initialize(Float[][] plate, Float top, Float bot, Float left, Float right) {
         for(int i=0; i<plate.length; i++){
             for(int j=0; j<plate.length; j++){
                 if(i==0){
@@ -65,13 +65,13 @@ public class ArrayDoublePlate {
     // Loop until exit criteria are met, updating each newPlate cell from the
     //   average temperatures of the corresponding neighbors in oldPlate
     // Returns the maximum change between oldPlate and newPlate cells
-    public static double diffuse(double[][] oldPlate, double[][] newPlate) {
+    public static Float diffuse(Float[][] oldPlate, Float[][] newPlate) {
         // diffuse the oldPlate into the newPlate
-    	double maxChange = 0;
+    	Float maxChange = 0.0f;
         for (int i = 1; i <= d; i++) {
             for (int j = 1; j <= d; j++) {
                 newPlate[i][j] = (oldPlate[i + 1][j] + oldPlate[i - 1][j] +
-                                  oldPlate[i][j + 1] + oldPlate[i][j - 1]) / 4.0;
+                                  oldPlate[i][j + 1] + oldPlate[i][j - 1]) / 4.0f;
                 maxChange = Math.max(maxChange, Math.abs(newPlate[i][j] - oldPlate[i][j]));
             }
         }
@@ -80,7 +80,7 @@ public class ArrayDoublePlate {
     
     
     // Swap the plates and continue ...
-    public static void swap(double[][] oldPlate, double[][] newPlate) {
+    public static void swap(Float[][] oldPlate, Float[][] newPlate) {
         // put the values of newPlate into oldPlate
         for(int i= 0; i < oldPlate.length; i++) {
             for(int j= 0; j < oldPlate.length; j++) {
@@ -90,11 +90,11 @@ public class ArrayDoublePlate {
     }
     
     // Print out the values of the array called for in main
-    public static void print(double[][] grid) {
+    public static void print(Float[][] grid) {
         
         for(int i= 0; i < grid.length; i++) {
             for(int j= 0; j < grid.length; j++) {
-                grid[i][j] = (double)Math.round(grid[i][j] * 100) / 100;
+                grid[i][j] = (float)Math.round(grid[i][j] * 100.0f) / 100.0f;
                 if(i!=0 && i!=grid.length-1 && j!=0 && j!=grid.length-1){
                     System.out.print(grid[i][j]+" ");
                     
@@ -103,5 +103,5 @@ public class ArrayDoublePlate {
             }
             System.out.print("\n");
         }
-    }
+    }   
 }
