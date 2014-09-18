@@ -251,17 +251,15 @@ public class program1_Tpdahp {
 		
 		// Get the Java runtime
 	    Runtime runtime = Runtime.getRuntime();
-	    // Run the garbage collector
-	    runtime.gc();
 	    System.out.println("##### Heap utilization statistics #####");
 	    // Print used memory
 	    long memory = runtime.totalMemory() - runtime.freeMemory();
 	    System.out.println("Used memory in bytes: " + memory);
 	    System.out.println("Used memory in megabytes: " + bytesToMegabytes(memory));
-	  //Print free memory
+	    //Print free memory
         System.out.println("Free memory in bytes:" + runtime.freeMemory());
         System.out.println("Free memory in megabytes: " + bytesToMegabytes(runtime.freeMemory()));
-      //Print total available memory
+        //Print total available memory
         System.out.println("Total available memory in bytes:" + runtime.totalMemory());
         System.out.println("Total available memory in megabytes: " + bytesToMegabytes(runtime.totalMemory()));
 	    System.out.println("##### Runtime statistics #####");
