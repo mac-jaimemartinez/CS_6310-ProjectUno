@@ -2,11 +2,15 @@ package Tpdahp;
 
 public class MetaData {
 	// for displaying the runtime statistics in milliseconds
-			long startTime;
-			int numIterations;
-			
+	long startTime;
+	int numIterations;
+	
 	public void startTiming() {
 		startTime = System.currentTimeMillis();
+	}
+	
+	public void setNumIterations(int i) {
+		numIterations = i;
 	}
 	
 	// for displaying memory statistics in MB
@@ -19,6 +23,8 @@ public class MetaData {
 	public void print() {
 		// Get the Java runtime
 	    Runtime runtime = Runtime.getRuntime();
+	    //Run the garbage collector
+	    runtime.gc();
 	    System.out.println("##### Heap utilization statistics #####");
 	    
 	    // Print used memory
