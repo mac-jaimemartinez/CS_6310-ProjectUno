@@ -255,6 +255,8 @@ public class program2_Tpfahp {
 		
 		// Get the Java runtime
 	    Runtime runtime = Runtime.getRuntime();
+	    //Run the garbage collector
+	    runtime.gc();
 	    System.out.println("##### Heap utilization statistics #####");
 	    // Print used memory
 	    long memory = runtime.totalMemory() - runtime.freeMemory();

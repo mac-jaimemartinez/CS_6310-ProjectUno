@@ -322,6 +322,8 @@ public class program4_Tpdohp {
         
 		// Get the Java runtime
 	    Runtime runtime = Runtime.getRuntime();
+	    //Run the garbage collector
+	    runtime.gc();
 	    // Run the garbage collector
 	    // Print used memory
 	    long memory = runtime.totalMemory() - runtime.freeMemory();
