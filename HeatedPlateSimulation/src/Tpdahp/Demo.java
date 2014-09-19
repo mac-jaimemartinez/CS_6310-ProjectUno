@@ -14,8 +14,8 @@ package Tpdahp;
 
 
 public class Demo {
-	private static int d;
-	private static double t, b, l, r;
+	private static int dimension;
+	private static double topEdgeTemp, bottomEdgeTemp, leftEdgeTemp, rightEdgeTemp;
 	
     // NOTE: below is the command line syntax for running the java program
     // java Tpdahp.Demo -d # -l # -r # -t # -b #
@@ -42,9 +42,9 @@ public class Demo {
 	                // assign what the user has specified to d
 	                // We increment i by 1 more to skip over the value
 	                try {
-	                    d = Integer.parseInt(commandOptions[++i]);
-	                    if(d <= 0) {
-	                        System.out.println("The parameter for -d must be greater than or equal to 0.");
+	                    dimension = Integer.parseInt(commandOptions[++i]);
+	                    if(dimension <= 0) {
+	                        System.out.println("The parameter for -d must be greater than 0.");
 	                        System.exit(0);
 	                    }
 	                } catch(NumberFormatException e) {
@@ -64,8 +64,8 @@ public class Demo {
 	                // assign what the user has specified to t
 	                // We increment i by 1 more to skip over the value
 	                try {
-	                    t = Double.parseDouble(commandOptions[++i]);
-	                    if(t < 0.0 || t > 100.0) {
+	                    topEdgeTemp = Double.parseDouble(commandOptions[++i]);
+	                    if(topEdgeTemp < 0.0 || topEdgeTemp > 100.0) {
 	                        System.out.println("The value for -t must be in the range [0.0,100.0].");
 	                        System.exit(0);
 	                    }
@@ -86,8 +86,8 @@ public class Demo {
 	                // assign what the user has specified to l
 	                // We increment i by 1 more to skip over the value
 	                try {
-	                    l = Double.parseDouble(commandOptions[++i]);
-	                    if(l < 0.0 || l > 100.0) {
+	                    leftEdgeTemp = Double.parseDouble(commandOptions[++i]);
+	                    if(leftEdgeTemp < 0.0 || leftEdgeTemp > 100.0) {
 	                        System.out.println("The value for -l must be in the range [0.0,100.0].");
 	                        System.exit(0);
 	                    }
@@ -108,8 +108,8 @@ public class Demo {
 	                // assign what the user has specified to r
 	                // We increment i by 1 more to skip over the value
 	                try {
-	                    r = Double.parseDouble(commandOptions[++i]);
-	                    if(r < 0.0 || r > 100.0) {
+	                    rightEdgeTemp = Double.parseDouble(commandOptions[++i]);
+	                    if(rightEdgeTemp < 0.0 || rightEdgeTemp > 100.0) {
 	                        System.out.println("The value for -r must be in the range [0.0,100.0].");
 	                        System.exit(0);
 	                    }
@@ -130,8 +130,8 @@ public class Demo {
 	                // assign what the user has specified to b
 	                // We increment i by 1 more to skip over the value
 	                try {
-	                    b = Double.parseDouble(commandOptions[++i]);
-	                    if(b < 0.0 || b > 100.0) {
+	                    bottomEdgeTemp = Double.parseDouble(commandOptions[++i]);
+	                    if(bottomEdgeTemp < 0.0 || bottomEdgeTemp > 100.0) {
 	                        System.out.println("The value for -b must be in the range [0.0,100.0].");
 	                        System.exit(0);
 	                    }
@@ -162,7 +162,8 @@ public class Demo {
         
         // Run the simulation and print results
         ArrayDoublePlate simulation = new ArrayDoublePlate();
-        simulation.runSimulation(d,t,b,l,r, metaData);
+        simulation.runSimulation(dimension, topEdgeTemp, bottomEdgeTemp,
+        		leftEdgeTemp, rightEdgeTemp, metaData);
         
         // Print the meta data about the simulation
         metaData.print();

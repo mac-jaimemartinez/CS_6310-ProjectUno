@@ -3,28 +3,28 @@ package Tpdahp;
 public class ArrayDoublePlate {
 	// Create arrays oldPlate and newPlate with linear dimension d
     //   plus two extra rows and columns to hold edge temperatures
-    private static int d;
+    private static int dimension;
     private static int maxIterations= 400;
     private static double relChgStopCriteria = 0.005;
     private static double[][] oldPlate;
     private static double[][] newPlate;
-    private static double t, b, l, r;
+    private static double topEdgeTemp, bottomEdgeTemp, leftEdgeTemp, rightEdgeTemp;
     
     // Run the simulation
     public void runSimulation(int dim, double top, double bottom, double left,
     		double right, MetaData metaData) {
    
-        d = dim;
-        t = top;
-        b = bottom;
-        l = left;
-        r = right;
+        dimension = dim;
+        topEdgeTemp = top;
+        bottomEdgeTemp = bottom;
+        leftEdgeTemp = left;
+        rightEdgeTemp = right;
         
         // Initialize plates before simulation		
-        oldPlate= new double[d + 2][d + 2];
-        initialize(oldPlate, t, b, l, r);
-        newPlate= new double[d + 2][d + 2];
-        initialize(newPlate, t, b, l, r);
+        oldPlate= new double[dimension + 2][dimension + 2];
+        initialize(oldPlate, topEdgeTemp, bottomEdgeTemp, leftEdgeTemp, rightEdgeTemp);
+        newPlate= new double[dimension + 2][dimension + 2];
+        initialize(newPlate, topEdgeTemp, bottomEdgeTemp, leftEdgeTemp, rightEdgeTemp);
         
         // Simulate Diffusion by averaging the temperatures
         double maxChange = 100;
@@ -68,8 +68,8 @@ public class ArrayDoublePlate {
     public static double diffuse(double[][] oldPlate, double[][] newPlate) {
         // diffuse the oldPlate into the newPlate
     	double maxChange = 0;
-        for (int i = 1; i <= d; i++) {
-            for (int j = 1; j <= d; j++) {
+        for (int i = 1; i <= dimension; i++) {
+            for (int j = 1; j <= dimension; j++) {
                 newPlate[i][j] = (oldPlate[i + 1][j] + oldPlate[i - 1][j] +
                                   oldPlate[i][j + 1] + oldPlate[i][j - 1]) / 4.0;
                 maxChange = Math.max(maxChange, Math.abs(newPlate[i][j] - oldPlate[i][j]));
