@@ -13,7 +13,7 @@ public class ArrayDoublePlate {
     // Run the simulation
     public void runSimulation(int dim, double top, double bottom, double left,
     		double right, MetaData metaData) {
-        //Process the command line options
+   
         d = dim;
         t = top;
         b = bottom;
