@@ -3,8 +3,8 @@ package Tpdohp;
 public class LatticePlate {
     
     public static int dimension;
-    private static int maxIterations= 400;
-    private static  double relChgStopCriteria = 0.005;
+    private static int maxIterations= 100;
+    private static  double relChgStopCriteria = 1.00;
     public static double topEdgeTemp, bottomEdgeTemp, leftEdgeTemp, rightEdgeTemp;
      
         //Object to represent our lattice.

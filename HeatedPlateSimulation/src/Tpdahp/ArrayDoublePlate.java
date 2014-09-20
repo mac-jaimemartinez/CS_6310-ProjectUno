@@ -4,8 +4,8 @@ public class ArrayDoublePlate {
 	// Create arrays oldPlate and newPlate with linear dimension d
     //   plus two extra rows and columns to hold edge temperatures
     private static int dimension;
-    private static int maxIterations= 400;
-    private static double relChgStopCriteria = 0.005;
+    private static int maxIterations= 100;
+    private static double relChgStopCriteria = 1.00;
     private static double[][] oldPlate;
     private static double[][] newPlate;
     private static double topEdgeTemp, bottomEdgeTemp, leftEdgeTemp, rightEdgeTemp;

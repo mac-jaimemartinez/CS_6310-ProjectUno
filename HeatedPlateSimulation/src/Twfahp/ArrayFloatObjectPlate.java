@@ -4,8 +4,8 @@ public class ArrayFloatObjectPlate {
 	// Create arrays oldPlate and newPlate with linear dimension d
     //   plus two extra rows and columns to hold edge temperatures
     private static int dimension;
-    private static int maxIterations= 400;
-    private static Float relChgStopCriteria = 0.005f;
+    private static int maxIterations= 100;
+    private static Float relChgStopCriteria = 1.00f;
     private static Float[][] oldPlate;
     private static Float[][] newPlate;
     private static Float topEdgeTemp, bottomEdgeTemp, leftEdgeTemp, rightEdgeTemp;
