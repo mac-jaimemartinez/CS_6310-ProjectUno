@@ -3,6 +3,7 @@ package Gallhp;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -31,6 +32,11 @@ public class Demo {
 	private JTextArea detailsTA;
 	private JButton runBtn;
 	private int varSelection = 0;
+	
+	//get screensize
+	private final static Dimension SCREEN_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
+	private final static double WIDTH = SCREEN_SIZE.getWidth();
+	private final static double HEIGHT = SCREEN_SIZE.getHeight();
 
 	public JPanel createContentPane(){
 		// We create a bottom JPanel to place everything on.
@@ -46,7 +52,7 @@ public class Demo {
 
 		// Creation of a Panel to contain variant run details
 		JPanel detailPanel = new JPanel();
-		totalGUI.add(detailPanel, BorderLayout.CENTER);
+		totalGUI.add(detailPanel, BorderLayout.EAST);
 
 		// Creation of a Panel to run button details
 		JPanel runPanel = new JPanel();
@@ -102,7 +108,7 @@ public class Demo {
 		detailsTA = new JTextArea();
 
 		JScrollPane jsp = new JScrollPane(detailsTA);
-		jsp.setPreferredSize(new Dimension(300, 450));
+		jsp.setPreferredSize(new Dimension((int) (WIDTH * .85), (int) (HEIGHT * .85)));
 		detailPanel.add(jsp);
 
 		//////////////Save Panel/////////////////////////
@@ -123,7 +129,7 @@ public class Demo {
 		Demo demo = new Demo();
 		frame.setContentPane(demo.createContentPane());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(600, 600);
+		frame.setSize((int)WIDTH, (int)HEIGHT);
 		frame.setVisible(true);
 	}
 
