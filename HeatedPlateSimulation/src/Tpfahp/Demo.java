@@ -42,8 +42,8 @@ public class Demo {
 	                // We increment i by 1 more to skip over the value
 	                try {
 	                    dimension = Integer.parseInt(commandOptions[++i]);
-	                    if(dimension <= 0) {
-	                        System.out.println("The parameter for -d must be greater than 0.");
+	                    if(dimension <= 0 || dimension > 25) {
+	                        System.out.println("The parameter for -d must be greater than 0 and less than or equal to 25.");
 	                        System.exit(0);
 	                    }
 	                } catch(NumberFormatException e) {

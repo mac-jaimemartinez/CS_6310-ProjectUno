@@ -153,8 +153,8 @@ public class Demo {
 	}
 
 	public boolean validArgs() {
-		if(!isInt(tfDimension.getText()) || Integer.parseInt(tfDimension.getText()) > 25 ){
-			printError("The value for Dimension must be an integer in the range [0,25].");
+		if(!isInt(tfDimension.getText()) || Integer.parseInt(tfDimension.getText()) < 1 || Integer.parseInt(tfDimension.getText()) > 25 ){
+			printError("The value for Dimension must be an integer in the range [1,25].");
 			return false;
 		}
 		else if(!isDecimal(tfTopEdge.getText()) || Double.parseDouble(tfTopEdge.getText()) > 100.0){
