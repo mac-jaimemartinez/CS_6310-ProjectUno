@@ -106,6 +106,7 @@ public class Demo {
 
 		//////////////Detail Panel/////////////////////////
 		detailsTA = new JTextArea();
+		detailsTA.setEditable(false);
 
 		JScrollPane jsp = new JScrollPane(detailsTA);
 		jsp.setPreferredSize(new Dimension((int) (WIDTH * .85), (int) (HEIGHT * .85)));
