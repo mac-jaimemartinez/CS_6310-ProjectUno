@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -45,7 +46,7 @@ public class Demo {
 
 		// Creation of a Panel to contain variant run details
 		JPanel detailPanel = new JPanel();
-		totalGUI.add(detailPanel, BorderLayout.EAST);
+		totalGUI.add(detailPanel, BorderLayout.CENTER);
 
 		// Creation of a Panel to run button details
 		JPanel runPanel = new JPanel();
@@ -99,10 +100,9 @@ public class Demo {
 
 		//////////////Detail Panel/////////////////////////
 		detailsTA = new JTextArea();
-		detailsTA.setWrapStyleWord(true);
-		detailsTA.setPreferredSize(new Dimension(300, 450));
+
 		JScrollPane jsp = new JScrollPane(detailsTA);
-		jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		jsp.setPreferredSize(new Dimension(300, 450));
 		detailPanel.add(jsp);
 
 		//////////////Save Panel/////////////////////////
@@ -228,14 +228,13 @@ public class Demo {
 
 						//form output stings
 						String simTitle = "Run Simulation: Primitive double array plate.\n" +
-										  "_____________________________________________\n";
+										  "_____________________________________\n";
 						String simOutput = simulation.runSimulation(dimension, topEdgeTemp, bottomEdgeTemp,
-								leftEdgeTemp, rightEdgeTemp, metaData) + "\n\n";
+								leftEdgeTemp, rightEdgeTemp, metaData);
 
-						String metaTitle = "Meta Data: Primitive double array plate.\n" +
-								           "_____________________________________________\n";
+						String metaTitle = "_____________________________________\n";
 						// Print the meta data about the simulation
-						String metaOutput = metaData.print() + "\n\n";
+						String metaOutput = metaData.print() + "\n";
 
 						detailsTA.setText(simTitle + simOutput + metaTitle + metaOutput);
 					}
@@ -253,14 +252,13 @@ public class Demo {
 
 						//form output stings
 						String simTitle = "Run Simulation: Primitive float array plate.\n" +
-										  "_____________________________________________\n";
+										  "_____________________________________\n";
 						String simOutput = simulation.runSimulation(dimension, topEdgeTemp, bottomEdgeTemp,
-								leftEdgeTemp, rightEdgeTemp, metaData) + "\n\n";
+								leftEdgeTemp, rightEdgeTemp, metaData);
 
-						String metaTitle = "Meta Data: Primitive float array plate.\n" +
-										   "_____________________________________________\n";
+						String metaTitle = "_____________________________________\n";
 						// Print the meta data about the simulation
-						String metaOutput = metaData.print() + "\n\n";
+						String metaOutput = metaData.print() + "\n";
 
 						detailsTA.setText(simTitle + simOutput + metaTitle + metaOutput);
 					}
@@ -278,14 +276,13 @@ public class Demo {
 
 						//form output stings
 						String simTitle = "Run Simulation: Wrapped float array plate.\n" +
-								   		  "_____________________________________________\n";;
+								   		  "_____________________________________\n";
 						String simOutput = simulation.runSimulation(dimension, topEdgeTemp, bottomEdgeTemp,
-								leftEdgeTemp, rightEdgeTemp, metaData) + "\n\n";
+								leftEdgeTemp, rightEdgeTemp, metaData);
 
-						String metaTitle = "Meta Data: Wrapped float array plate.\n" +
-										   "_____________________________________________\n";					
+						String metaTitle = "_____________________________________\n";					
 						// Print the meta data about the simulation
-						String metaOutput = metaData.print() + "\n\n";
+						String metaOutput = metaData.print() + "\n";
 
 						detailsTA.setText(simTitle + simOutput + metaTitle + metaOutput);
 					}
@@ -302,13 +299,14 @@ public class Demo {
 						LatticePlate simulation = new LatticePlate();
 
 						//form output stings
-						String simTitle = "///Run Simulation: Primitive double Object plate.///\n";
+						String simTitle = "Run Simulation: Primitive double Object plate.\n" +
+										   "_____________________________________\n";	
 						String simOutput = simulation.runSimulation(dimension, topEdgeTemp, bottomEdgeTemp,
-								leftEdgeTemp, rightEdgeTemp, metaData) + "\n\n";
+								leftEdgeTemp, rightEdgeTemp, metaData);
 
-						String metaTitle = "///Meta Data: Primitive double Object plate.///\n";
+						String metaTitle = "_____________________________________\n";	
 						// Print the meta data about the simulation
-						String metaOutput = metaData.print() + "\n\n";
+						String metaOutput = metaData.print() + "\n";
 
 						detailsTA.setText(simTitle + simOutput + metaTitle + metaOutput);
 					}
