@@ -14,9 +14,8 @@ public class MetaData {
 	}
 	
 	// for displaying memory statistics in MB
-	private static final long MEGABYTE = 1024L * 1024L;
-	public long bytesToMegabytes(long bytes) {
-	    return bytes / MEGABYTE;
+	private double bytesToMB(double val){
+		return (double)Math.round((double) val / (1024.0*1024.0) * 100) / 100;
 	}
 	
 	// Print the meta data about the simulation
@@ -24,22 +23,22 @@ public class MetaData {
 		// Get the Java runtime
 	    Runtime runtime = Runtime.getRuntime();
 	    //Run the garbage collector
-	    runtime.gc();
+	    //runtime.gc();
 	    System.out.println("##### Heap utilization statistics #####");
 	    
-	    // Print used memory
-	    long memory = runtime.totalMemory() - runtime.freeMemory();
-	    System.out.println("Used memory in bytes: " + memory);
-	    System.out.println("Used memory in megabytes: " + bytesToMegabytes(memory));
-	    
-	    //Print free memory
-	    System.out.println("Free memory in bytes:" + runtime.freeMemory());
-	    System.out.println("Free memory in megabytes: " + bytesToMegabytes(runtime.freeMemory()));
-	    
-	    //Print total available memory
-	    System.out.println("Total available memory in bytes:" + runtime.totalMemory());
-	    System.out.println("Total available memory in megabytes: " + bytesToMegabytes(runtime.totalMemory()));
-	    System.out.println("##### Runtime statistics #####");
+		// Print used memory
+		long memory = runtime.totalMemory() - runtime.freeMemory();
+		System.out.println("Used memory in bytes: " + memory);
+		System.out.println("Used memory in megabytes: " +  bytesToMB(memory));
+
+		//Print free memory
+		System.out.println("Free memory in bytes:" + runtime.freeMemory());
+		System.out.println("Free memory in megabytes: " + bytesToMB(runtime.freeMemory()));
+
+		//Print total available memory
+		System.out.println("Total available memory in bytes:" + runtime.totalMemory());
+		System.out.println("Total available memory in megabytes: " + bytesToMB(runtime.totalMemory()));
+		System.out.println("##### Runtime statistics #####");
 	    
 	    // Print execution time
 	    long endTime   = System.currentTimeMillis();
