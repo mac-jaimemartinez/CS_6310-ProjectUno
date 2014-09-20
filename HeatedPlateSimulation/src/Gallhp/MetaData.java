@@ -14,9 +14,8 @@ public class MetaData {
 	}
 	
 	// for displaying memory statistics in MB
-	private static final long MEGABYTE = 1024L * 1024L;
-	public long bytesToMegabytes(long bytes) {
-	    return bytes / MEGABYTE;
+	private double bytesToMB(double val){
+		return (double)Math.round((double) val / (1024.0*1024.0) * 100) / 100;
 	}
 	
 	// Print the meta data about the simulation
@@ -25,32 +24,31 @@ public class MetaData {
 		// Get the Java runtime
 	    Runtime runtime = Runtime.getRuntime();
 	    //Run the garbage collector
-	    runtime.gc();
+	    //runtime.gc();
 	    output += "##### Heap utilization statistics #####\n";
 	    
-	    // Print used memory
-	    long memory = runtime.totalMemory() - runtime.freeMemory();
-	    output += "Used memory in bytes: " + memory + "\n";
-	    output += "Used memory in megabytes: " + bytesToMegabytes(memory) + "\n";
-	    
-	    //Print free memory
-	    output += "Free memory in bytes:" + runtime.freeMemory() + "\n";
-	    output += "Free memory in megabytes: " + bytesToMegabytes(runtime.freeMemory()) + "\n";
-	    
-	    //Print total available memory
-	    output += "Total available memory in bytes:" + runtime.totalMemory() + "\n";
-	    output += "Total available memory in megabytes: " + bytesToMegabytes(runtime.totalMemory()) + "\n\n";
-	    
-	    output += "##### Runtime statistics #####\n";
+		// Print used memory
+		long memory = runtime.totalMemory() - runtime.freeMemory();
+		output += ("Used memory in bytes: " + memory + "\n");
+		output += ("Used memory in megabytes: " +  bytesToMB(memory) + "\n");
+
+		//Print free memory
+		output += ("Free memory in bytes:" + runtime.freeMemory() + "\n");
+		output += ("Free memory in megabytes: " + bytesToMB(runtime.freeMemory()) + "\n");
+
+		//Print total available memory
+		output += ("Total available memory in bytes:" + runtime.totalMemory() + "\n");
+		output += ("Total available memory in megabytes: " + bytesToMB(runtime.totalMemory()) + "\n");
+		output += ("##### Runtime statistics #####" + "\n");
 	    
 	    // Print execution time
 	    long endTime   = System.currentTimeMillis();
 	    long totalTime = endTime - startTime;
-	    output += "Total execution time: " +totalTime +" milliseconds\n";
+	    output += ("Total execution time: " +totalTime +" milliseconds" + "\n");
 	    
 	    // Print how many iterations of the Simulation were performed
-	    output += "Number of Iterations Performed: " + numIterations + "\n";
-	    
+	    output += ("Number of Iterations Performed: " + numIterations + "\n");
 	    return output;
 	}    
 }
+
