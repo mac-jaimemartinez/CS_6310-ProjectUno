@@ -60,7 +60,6 @@ public class program3_Twfahp {
 						System.exit(0);
 					}
 					countD++;
-
 				}
 				// Testing for the the -t argument
 				else if (commandOptions[i].equals("-t") && commandOptions.length > i){
@@ -82,7 +81,6 @@ public class program3_Twfahp {
 						System.exit(0);
 					}
 					countT++;
-
 				}
 				// Testing for the the -l argument
 				else if (commandOptions[i].equals("-l") && commandOptions.length > i){
@@ -104,7 +102,6 @@ public class program3_Twfahp {
 						System.exit(0);
 					}
 					countL++;
-
 				}
 				// Testing for the the -r argument
 				else if (commandOptions[i].equals("-r") && commandOptions.length > i){
@@ -126,7 +123,6 @@ public class program3_Twfahp {
 						System.exit(0);
 					}
 					countR++;
-
 				}
 				// Testing for the the -b argument
 				else if (commandOptions[i].equals("-b") && commandOptions.length > i){
@@ -148,7 +144,6 @@ public class program3_Twfahp {
 						System.exit(0);
 					}
 					countB++;
-
 				}
 			}
 		}
@@ -157,7 +152,6 @@ public class program3_Twfahp {
 			System.out.println("Invalid arguments supplied");
 			System.exit(0);
 		}
-
 	}
 
 	// Initialize the temperatures of the edge values and the plate itself
@@ -200,7 +194,6 @@ public class program3_Twfahp {
 		}
 	}
 
-
 	// Swap the plates and continue ...
 	public static void swap(Float[][] oldPlate2, Float[][] newPlate2) {
 		// put the values of newPlate into oldPlate
@@ -215,7 +208,6 @@ public class program3_Twfahp {
 		return numIterations > 80;
 	}
 
-
 	// Print out the values of the array called for in main
 	public static void print(Float[][] newPlate2) {
 
@@ -224,14 +216,11 @@ public class program3_Twfahp {
 				newPlate2[i][j] = (float)Math.round(newPlate2[i][j] * 100) / 100;
 				if(i!=0 && i!=newPlate2.length-1 && j!=0 && j!=newPlate2.length-1){
 					System.out.print(newPlate2[i][j]+" ");
-
 				}
-
 			}
 			System.out.print("\n");
 		}
 	}
-
 
 	public static void main(String[] args) {
 		// for displaying the runtime statistics in milliseconds
@@ -275,7 +264,5 @@ public class program3_Twfahp {
         long endTime   = System.currentTimeMillis();
         long totalTime = endTime - startTime;
         System.out.println("Total execution time: " +totalTime +" milliseconds");
-
 	}
-
 }

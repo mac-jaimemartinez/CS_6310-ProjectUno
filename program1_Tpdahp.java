@@ -60,7 +60,6 @@ public class program1_Tpdahp {
                         System.exit(0);
                     }
                     countD++;
-                    
                 }
                 // Testing for the the -t argument
                 else if (commandOptions[i].equals("-t") && commandOptions.length > i){
@@ -82,7 +81,6 @@ public class program1_Tpdahp {
                         System.exit(0);
                     }
                     countT++;
-                    
                 }
                 // Testing for the the -l argument
                 else if (commandOptions[i].equals("-l") && commandOptions.length > i){
@@ -104,7 +102,6 @@ public class program1_Tpdahp {
                         System.exit(0);
                     }
                     countL++;
-                    
                 }
                 // Testing for the the -r argument
                 else if (commandOptions[i].equals("-r") && commandOptions.length > i){
@@ -125,8 +122,7 @@ public class program1_Tpdahp {
                         System.out.println("The value of -r is "+commandOptions[i]+" and is not a number.");
                         System.exit(0);
                     }
-                    countR++;
-                    
+                    countR++;      
                 }
                 // Testing for the the -b argument
                 else if (commandOptions[i].equals("-b") && commandOptions.length > i){
@@ -148,7 +144,6 @@ public class program1_Tpdahp {
                         System.exit(0);
                     }
                     countB++;
-                    
                 }
             }
         }
@@ -157,7 +152,6 @@ public class program1_Tpdahp {
             System.out.println("Invalid arguments supplied");
             System.exit(0);
         }
-        
     }
     
     // Initialize the temperatures of the edge values and the plate itself
@@ -192,7 +186,6 @@ public class program1_Tpdahp {
         }
     }
     
-    
     // Swap the plates and continue ...
     public static void swap(double[][] oldPlate, double[][] newPlate) {
         // put the values of newPlate into oldPlate
@@ -207,7 +200,6 @@ public class program1_Tpdahp {
         return numIterations > 80;
     }
     
-    
     // Print out the values of the array called for in main
     public static void print(double[][] grid) {
         
@@ -215,15 +207,12 @@ public class program1_Tpdahp {
             for(int j= 0; j < grid.length; j++) {
                 grid[i][j] = (double)Math.round(grid[i][j] * 100) / 100;
                 if(i!=0 && i!=grid.length-1 && j!=0 && j!=grid.length-1){
-                    System.out.print(grid[i][j]+" ");
-                    
-                }
-                
+                    System.out.print(grid[i][j]+" ");  
+                }  
             }
             System.out.print("\n");
         }
     }
-    
     
     public static void main(String[] args) {
 		// for displaying the runtime statistics in milliseconds
@@ -248,7 +237,6 @@ public class program1_Tpdahp {
         // Display the results
         print(newPlate);
         
-		
 		// Get the Java runtime
 	    Runtime runtime = Runtime.getRuntime();
 	    //Run the garbage collector
@@ -268,7 +256,5 @@ public class program1_Tpdahp {
         long endTime   = System.currentTimeMillis();
         long totalTime = endTime - startTime;
         System.out.println("Total execution time: " +totalTime +" milliseconds");
-        
     }
-    
 }
