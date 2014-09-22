@@ -20,9 +20,9 @@ the remaining windows.  Press the "run" button to execute the program.
 To compile any of the individual programs, enter the following at the 
 command line:
 
-javac <name of program>/*.java
+javac nameOfProgram/*.java
 
-where <name of program> corresponds to any of the four program variants:
+where <name of nameOfProgram corresponds to any of the four program variants:
 
 Tpdahp
 Tpfahp
@@ -35,9 +35,9 @@ Example:  javac Tpdahp/*.java
 To execute any of the individual programs, enter the following at the
 command line:
 
-java <name of program>  -d # -l # -r # -t # -b #
+java nameOfProgram>  -d # -l # -r # -t # -b #
 
-where <name of program> corresponds to any of the four program variants:
+where nameOfprogram corresponds to any of the four program variants:
 
 Tpdahp
 Tpfahp
